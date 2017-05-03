@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>mini-twit</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='style.css')}}">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+</head>
+<body>
+<div class = 'container'>
+	<h1>twi-twa</h1>
+	<div class = 'usersOwn row' style="display:none">
+		<button class = 'col s6 offset-s3'>the wisest words</button>
+	</div>
+	<div class= 'logIn row'>
+		<div class = 'existingUsers'>
+			<button class = "col s2 offset-s3">I am a twit</button>
+			<div class = 'getUserInfo username' style="display: none">
+			<form>
+				<input type="text" placeholder="username">
+			</form>
+			</div>	
+		<div class = 'getUserInfo password' style = "display:none">
+			<form action = '/log-in'>
+				<input type="text" placeholder="password">
+				<input type="submit">
+			</form>
+		</div>		
+		</div>
+		<div class = 'newUsers'>
+			<button class = "col s2 offset-s1">I'm new here</button>
+			<div class= 'createUsername' style="display: none">
+			<form>
+				<input type="text" placeholder="create username">
+			</form>
+			</div>
+			<div class= 'createPassword' style="display: none">
+				<form>
+					<input type="text" placeholder="create password">
+					<input type="submit">
+				</form>
+			</div>
+		</div>
+	</div>		
+	<div class = 'tweets'></div>
+</div>
+</body>
+	<script type="text/javascript" src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script type="text/javascript" src = "{{ url_for ('static', filename='main.js')}}"></script>

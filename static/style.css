@@ -1,0 +1,14 @@
+/*body{
+	background-size: cover;
+	background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSSdqr6VmaKo1mzmA0xSSjMU8oKsbvHjaBwMT5gkNyAhZktp2U_QQ);
+}
+*/
+.container{
+	color:hotpink;
+}
+button{
+	font-weight: bold;
+}
+.content{
+	font-weight: bold;
+}
