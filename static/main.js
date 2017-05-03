@@ -92,7 +92,8 @@ var prependTofeed = function(jsonResponse){
 
 
 var showFeed = function(jsonResponse){
-		$('.usersOwn').show();
+		$('.createPost').show();
+		$('.viewTweets').show();
 		console.log(jsonResponse.feed);
 		var feed = jsonResponse.feed;
 		for (var i = 0; i<feed.length; i++){
