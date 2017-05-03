@@ -10,7 +10,7 @@ var baseURL = "http://127.0.0.1:3000/";
 var logInEP = "log-in?"; //username=&password=
 var feedEP = "feed";
 var repostEP = "retweet?";//username=&tweetID=
-var usersOwnEP = "/my-tweets?";//username=
+var usersOwnEP = "my-tweets?username=";
 
 $('.getUserInfo').submit(function(event){
 	event.preventDefault();
@@ -68,6 +68,8 @@ var prependTofeed = function(jsonResponse){
 	console.log(tweetContent)
 	var tweetWhen = document.createElement('p');
 	tweetWhen.innerHTML=current.when;
+	var tweetAuthor = document.createElement('p');
+	tweetAuthor.innerHTML= current.author;
 	var tweetWho = document.createElement('p');
 	tweetWho.innerHTML=current.who;
 	tweetWho.setAttribute('class','content');
@@ -81,6 +83,7 @@ var prependTofeed = function(jsonResponse){
 	each.setAttribute('class',tweetId);
 	each.appendChild(tweetContent);
 	each.appendChild(tweetWhen);
+	each.appendChild(tweetAuthor);
 	each.appendChild(tweetWho);
 	each.appendChild(yasButton);
 	each.appendChild(repostButton);
@@ -162,7 +165,7 @@ var repostAjax = function(url){
 var usersOwn = document.querySelector('.usersOwn');
 usersOwn.addEventListener("click",function(event){
 	event.preventDefault();
-	usersOwnAjax(baseURL+usersOwnEP+"username="+username);
+	usersOwnAjax(baseURL+usersOwnEP+username);
 });
 
 var usersOwnAjax = function(url){
@@ -183,7 +186,19 @@ var usersOwnAjax = function(url){
 	xhr.send();
 }; 
 
-var showUserTweets = function(response){
-	console.log(response)
+var showUserTweets = function(jsonResponse){
+	$('.tweets').hide();
+	response = jsonResponse.tweets;
+	var show = response.map(function(response){
+		var myTweet = document.createElement('div');
+		myTweet.setAttribute('class','usersOwnTweets');
+		var tweetContent = document.createElement('p');
+		tweetContent.innerHTML = response.content;
+		var tweetWhen = document.createElement('p');
+		tweetWhen.innerHTML = response.when;
+		myTweet.appendChild(tweetContent);
+		myTweet.appendChild(tweetWhen);
+		$('.myTweets').append(myTweet)
+	})	
 }
 });
